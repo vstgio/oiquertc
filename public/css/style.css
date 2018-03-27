@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1vw;
+}
+
+#chat {
+  width: 600px;
+  height: 400px;
+  background-color: lightgray;
+}
+
+button {
+  width: 100px;
+}
+
+input {
+  width: 500px;
+}
