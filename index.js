@@ -10,17 +10,17 @@ app.get("/", function(request, response){
 app.use(express.static(__dirname + "/public"));
 
 io.on("connection", function(socket) {
-  console.log("+ USER CONNECTED.");
+  console.log("+ a new user connected.");
 
-  socket.on("disconnect", function(){
-    console.log("- USER DISCONNECTED.")
+  socket.on("disconnect", function() {
+    console.log("- a user disconnected.")
   });
 
-  socket.on("message", function(message){
-    console.log("> NEW MESSAGE: " + message);
+  socket.on("message", function(message) {
+    io.emit("message", message);
   });
 });
 
 http.listen(3000, function(){
-  console.log("> WORKING ON *:3000");
+  console.log("> hi, it's working :)");
 });
