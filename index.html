@@ -26,6 +26,14 @@
           return false;
         });
 
+        socket.on("connected", function(message) {
+          $("#chat").append("<li>" + message + "</li>");
+        });
+
+        socket.on("disconnected", function(message) {
+          $("#chat").append("<li>" + message + "</li>");
+        });
+
         socket.on("message", function(message) {
           $("#chat").append("<li>" + message + "</li>");
         });
