@@ -8,10 +8,16 @@
   </head>
 
   <body>
-    <ul id="chat"></ul>
-    <form action="">
-      <input id="message" autocomplete="off" /><button>ENVIAR</button>
-    </form>
+    <div class="chat-window">
+      <div class="browser-bar">
+        <span class="close-button"></span>
+      </div>
+      <div class="text-area"></div>
+      <form action="">
+        <input id="message" autocomplete="off" />
+        <button id="button-send">enviar</button>
+      </form>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script
@@ -27,15 +33,15 @@
         });
 
         socket.on("connected", function(message) {
-          $("#chat").append("<li>" + message + "</li>");
+          $(".text-area").append("<li>" + message + "</li>");
         });
 
         socket.on("disconnected", function(message) {
-          $("#chat").append("<li>" + message + "</li>");
+          $(".text-area").append("<li>" + message + "</li>");
         });
 
         socket.on("message", function(message) {
-          $("#chat").append("<li>" + message + "</li>");
+          $(".text-area").append("<li>" + message + "</li>");
         });
 
       });

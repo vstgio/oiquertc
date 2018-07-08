@@ -7,7 +7,9 @@
 body {
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.1vw;
+  background-color: #C5DFF3;
 }
+back
 
 #chat {
   width: 600px;
@@ -15,10 +17,60 @@ body {
   background-color: lightgray;
 }
 
-button {
-  width: 100px;
+form {
+  position: absolute;
+  width: calc(100% - 40px);
+  bottom: 10px;
 }
 
-input {
-  width: 500px;
+#message {
+  width: 80%;
+  font-size: .9vw;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+#button-send {
+  width: 18%;
+  font-size: .9vw;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.chat-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50vw;
+  height: 50vh;
+  padding: 40px 20px 20px;
+  background-color: #f3f4f4;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .5);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.browser-bar {
+  background: #2C3E50;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 5px;
+  padding-left: 12px;
+  border-radius: 5px 5px 0 0;
+}
+
+.close-button {
+  width: 12px;
+  height: 12px;
+  background: #fc635d;
+  border-radius: 50%;
+  display: inline-block;
+  float: left;
+}
+
+.text-area {
+  font-size: .9vw;
+  list-style-type: none;
 }
