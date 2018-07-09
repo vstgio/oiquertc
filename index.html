@@ -14,8 +14,8 @@
       </div>
       <div class="text-area"></div>
       <form action="">
-        <input id="message" autocomplete="off" />
-        <button id="button-send">enviar</button>
+        <input id="message" autocomplete="off" autofocus/>
+
       </form>
     </div>
 
@@ -23,7 +23,10 @@
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
+
+
       $(function(){
+
         var socket = io();
 
         $("form").submit(function(){
@@ -41,7 +44,7 @@
         });
 
         socket.on("message", function(message) {
-          $(".text-area").append("<li>" + message + "</li>");
+          $(".text-area").append("<li> > <span class='underline'>" + message + "</span></li>");
         });
 
       });
