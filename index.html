@@ -14,8 +14,7 @@
       </div>
       <div class="text-area"></div>
       <form action="">
-        <input id="message" autocomplete="off" autofocus/>
-
+        <input id="message-input" autocomplete="off" autofocus/>
       </form>
     </div>
 
@@ -24,30 +23,55 @@
 			  src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
 
-
       $(function(){
 
         var socket = io();
 
         $("form").submit(function(){
-          socket.emit("message", $("#message").val());
-          $("#message").val("");
+          socket.emit("message", $("#message-input").val());
+          $("#message-input").val("");
           return false;
         });
 
         socket.on("connected", function(message) {
-          $(".text-area").append("<li>" + message + "</li>");
+          if (checkForEmptySpace()) {
+            insertMessageLine(message);
+          }
         });
 
         socket.on("disconnected", function(message) {
-          $(".text-area").append("<li>" + message + "</li>");
+          if (checkForEmptySpace()) {
+            insertMessageLine(message);
+          }
         });
 
         socket.on("message", function(message) {
-          $(".text-area").append("<li> > <span class='underline'>" + message + "</span></li>");
+          if (checkForEmptySpace()) {
+            insertMessageLine("> <span class='underline'>" + message + "</span>");
+          }
         });
-
       });
+
+      function insertMessageLine(message) {
+        $(".text-area").append("<li class='message-line'>" + message + "</li>");
+      }
+
+      function checkForEmptySpace() {
+        var how_many_text_lines = $('.message-line').length;
+
+        if (how_many_text_lines == 0) {
+            return true;
+        }
+        else {
+          var line_height = $(".message-line").outerHeight(true);
+          var textarea_height = $(".text-area").height();
+
+          if ((textarea_height - (line_height*how_many_text_lines)) >= line_height) {
+            return true;
+          }
+        }
+      }
+
     </script>
 
   </body>

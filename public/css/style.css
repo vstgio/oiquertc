@@ -51,6 +51,8 @@ body {
 .text-area {
   font-size: .9vw;
   list-style-type: none;
+  width:  100%;
+  height: 100%;
 }
 
 .text-area li {
@@ -71,7 +73,7 @@ form {
   bottom: 0px;
 }
 
-#message {
+#message-input {
   width: 100%;
   height: 20px;
   font-size: .9vw;
