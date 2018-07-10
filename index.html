@@ -34,21 +34,24 @@
         });
 
         socket.on("connected", function(message) {
-          if (checkForEmptySpace()) {
-            insertMessageLine(message);
+          if (checkForEmptySpace() == false) {
+            removeFirstMessage()
           }
+          insertMessageLine(message);
         });
 
         socket.on("disconnected", function(message) {
-          if (checkForEmptySpace()) {
-            insertMessageLine(message);
+          if (checkForEmptySpace() == false) {
+            removeFirstMessage()
           }
+          insertMessageLine(message);
         });
 
         socket.on("message", function(message) {
-          if (checkForEmptySpace()) {
-            insertMessageLine("> <span class='underline'>" + message + "</span>");
+          if (checkForEmptySpace() == false) {
+            removeFirstMessage()
           }
+          insertMessageLine("> <span class='underline'>" + message + "</span>");
         });
       });
 
@@ -69,7 +72,14 @@
           if ((textarea_height - (line_height*how_many_text_lines)) >= line_height) {
             return true;
           }
+          else {
+            return false;
+          }
         }
+      }
+
+      function removeFirstMessage() {
+        $('.message-line')[0].remove();
       }
 
     </script>
